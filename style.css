@@ -1,0 +1,10 @@
+h1 {
+    color: #d76f6f;
+}
+
+head {
+    font-family: Arial, sans-serif;
+    background-color: rgb(red green blue / alpha);
+    margin: 0;
+    padding: 0;
+}

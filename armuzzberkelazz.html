@@ -7,6 +7,8 @@
     <title>
         armuzzberkelazz iuiuedhi
     </title>
+    <!-- 1. CSS Bootstrap 6.0 Alpha 1 -->
+    <link href="https://jsdelivr.net" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body
@@ -15,7 +17,73 @@
     <h1>armuzzberkelazz</h1>
     <p>iuwduhwq \n armuzzberkelazz</p>
     <h5 style="color: #495285;">iuiuedhi oiejjdwoiejd iehdiwheoihdo oiqwhdoihqowihd oijwqoidhqoiwdhoiwn</h5>
-    <h1><a href="https://aryamusthofa.github.io/gabutwebkuliahseminar/">BACK</a></h1>
+    <h1><a href="https://aryamusthofa.github.io/gabutwebkuliahseminar/">BACK</a></h1> or <h1><a
+            href="index.html">BACK</a></h1>
+
+    <!-- Wadah Konten Utama -->
+    <div class="container my-5">
+        <h1 class="text-center text-primary mb-4">Halo Dunia! Gw Belajar Bootstrap 6</h1>
+
+        <!-- Contoh Grid Sistem Baru di Bootstrap 6 -->
+        <div class="row g-3">
+            <!-- Di layar besar (lg) memakan 6 kolom, di layar kecil otomatis penuh -->
+            <div class="lg:col-6">
+                <div class="card p-4 shadow-sm">
+                    <h3>Kotak Kiri</h3>
+                    <p>Ini adalah contoh komponen kartu (Card) Bootstrap 6.</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Buka Modal (Pop-up)
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-6">
+                <div class="card p-4 shadow-sm">
+                    <h3>Kotak Kanan</h3>
+                    <p>Gaya responsif sekarang menggunakan format <code>lg:col-6</code>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contoh Komponen Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pemberitahuan</h5>
+                    <button type="text" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Wih mantap! Script JavaScript Bootstrap 6 kamu berhasil jalan!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. JS Bootstrap 6.0 (Wajib pakai type="module") -->
+    <script type="module" src="https://jsdelivr.net"></script>
+
+    <!-- Konten Navbar Sederhana -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Bootstrap 6</a>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container mt-5">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Halo, Bootstrap 6.0!</h1>
+                <p class="col-md-8 fs-4">Ini adalah contoh template dasar menggunakan Bootstrap 6 Alpha via CDN.</p>
+                <button class="btn btn-primary btn-lg" type="button">Tombol Utama</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 6.0 JavaScript CDN (Wajib type="module" karena ESM-only di v6) -->
+    <script type="module" src="https://jsdelivr.net" crossorigin="anonymous"></script>
 </body>
 
 </html>
