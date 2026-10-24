@@ -18,6 +18,18 @@
 
     <!-- Main Container Card (Tampilan Mobile Centered) -->
     <div class="mx-auto max-w-md px-4 py-12">
+        <!-- TAB TEMA (Sisipkan di HTML) -->
+        <div id="theme-switcher" class="mt-4 flex justify-center gap-2 mb-12">
+            <button data-theme="terang"
+                class="cursor-pointer rounded-lg bg-white px-3 py-1.5 text-xs font-bold text-slate-800 shadow-sm ring-1 ring-slate-200 hover:scale-105 transition">Terang</button>
+            <button data-theme="gelap"
+                class="cursor-pointer rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-100 shadow-sm hover:scale-105 transition">Gelap</button>
+            <button data-theme="hangat"
+                class="cursor-pointer rounded-lg bg-amber-200 px-3 py-1.5 text-xs font-bold text-amber-900 shadow-sm hover:scale-105 transition">Hangat</button>
+            <button data-theme="rgb"
+                class="cursor-pointer rounded-lg bg-gradient-to-r from-red-500 via-green-500 to-blue-500 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:scale-105 transition animate-pulse">RGB
+                🌈</button>
+        </div>
 
         <!-- ==================== HEADER / PROFIL ==================== -->
         <header class="flex flex-col items-center text-center">

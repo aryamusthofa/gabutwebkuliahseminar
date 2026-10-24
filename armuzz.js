@@ -1,4 +1,4 @@
-// ===== 1. DATA ASLI DARI MYBIO.HTML (PAKE SVG) =====
+// ===== 1. DATA (ARRAY OF OBJECTS) =====
 const links = [
     {
         id: 1,
@@ -56,42 +56,14 @@ const links = [
     }
 ];
 
-// ===== 3. RENDER LOGIC =====
-function renderLinks(category = "semua") {
-    if (!linkList) return;
-    linkList.innerHTML = "";
+// ===== 2. SELEKSI ELEMEN DOM =====
+const linkList = document.querySelector("#link-list");
+const filterTabs = document.querySelector("#filter-tabs");
+const tabButtons = filterTabs ? filterTabs.querySelectorAll("button") : [];
+const themeButtons = document.querySelectorAll("#theme-switcher button");
+const body = document.body;
 
-    links.forEach(link => {
-        // Filter: tampilkan jika kategori 'semua' atau kategorinya cocok
-        if (category === "semua" || link.category === category) {
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-
-            a.href = link.url;
-            if (link.url.startsWith("http")) {
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-            }
-
-            a.className = `group flex items-center justify-between rounded-xl bg-white px-5 py-4 font-medium text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md ${link.hoverRing} focus:outline-none focus:ring-2 focus:ring-amber-400`;
-
-            a.innerHTML = `
-                <span class="flex items-center gap-3">
-                    <span class="flex h-6 w-6 items-center justify-center">${link.svgIcon}</span>
-                    <span>${link.title}</span>
-                </span>
-                <svg class="h-5 w-5 text-slate-400 transition-transform duration-200 group-hover:translate-x-1 ${link.hoverText}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            `;
-
-            li.appendChild(a);
-            linkList.appendChild(li);
-        }
-    });
-}
-
-// ===== 2. FUNGSI PABRIK ITEM LINK (DOM BUILDER) =====
+// ===== 3. PABRIK ELEMEN LINK =====
 function createLinkItem(link) {
     const item = document.createElement("li");
     const anchor = document.createElement("a");
@@ -99,13 +71,11 @@ function createLinkItem(link) {
     anchor.href = link.url;
     anchor.className = `group flex items-center justify-between rounded-xl bg-white px-5 py-4 font-medium text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md ${link.hoverRing} focus:outline-none focus:ring-2 focus:ring-amber-400`;
 
-    // Cek jika buka tab baru (http/https saja)
     if (link.url.startsWith("http")) {
         anchor.target = "_blank";
         anchor.rel = "noopener noreferrer";
     }
 
-    // SVG panah kanan (kanan kartu)
     const arrowSvg = `
         <svg class="h-5 w-5 text-slate-400 transition-transform duration-200 group-hover:translate-x-1 ${link.hoverText}"
             fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +83,6 @@ function createLinkItem(link) {
         </svg>
     `;
 
-    // Rakit isi dalam anchor (Icon SVG + Title & Arrow SVG)
     anchor.innerHTML = `
         <span class="flex items-center gap-3">
             <span class="flex h-6 w-6 items-center justify-center">${link.svgIcon}</span>
@@ -123,22 +92,49 @@ function createLinkItem(link) {
     `;
 
     item.appendChild(anchor);
-    return item; // Selesai rakit 1 li
+    return item;
 }
 
-// ===== 3. SELEKSI ELEMEN & LOGIKA RENDER =====
-const linkList = document.querySelector("#link-list");
+// ===== 4. LOGIKA RENDER & FILTER =====
+function renderLinks(category = "semua") {
+    if (!linkList) return;
+    linkList.innerHTML = "";
 
-function renderLinks(category) {
-    if (!linkList) return; // Mencegah error jika wadah belum ada
-    linkList.innerHTML = ""; // Bersihin isi lama
-
-    links.forEach(function (link) {
+    links.forEach(link => {
         if (category === "semua" || link.category === category) {
             linkList.appendChild(createLinkItem(link));
         }
     });
 }
 
-// ===== 4. JALANKAN PERTAMA KALI =====
+// Event Listener Filter Tabs
+tabButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        tabButtons.forEach(btn => btn.setAttribute("aria-pressed", btn === button ? "true" : "false"));
+        renderLinks(button.dataset.category);
+    });
+});
+
+// ===== 5. LOGIKA TOGGLE TEMA =====
+const THEMES = {
+    terang: "bg-slate-100 text-slate-800",
+    gelap: "bg-slate-900 text-slate-100",
+    hangat: "bg-amber-100 text-amber-900",
+    rgb: "bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 text-white animate-pulse"
+};
+
+function changeTheme(selectedTheme) {
+    Object.values(THEMES).forEach(classes => {
+        body.classList.remove(...classes.split(" "));
+    });
+    body.classList.add(...THEMES[selectedTheme].split(" "));
+}
+
+themeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        changeTheme(button.dataset.theme);
+    });
+});
+
+// ===== 6. INSIALISASI PERTAMA KALI =====
 renderLinks("semua");
