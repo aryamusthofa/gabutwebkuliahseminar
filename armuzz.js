@@ -56,6 +56,41 @@ const links = [
     }
 ];
 
+// ===== 3. RENDER LOGIC =====
+function renderLinks(category = "semua") {
+    if (!linkList) return;
+    linkList.innerHTML = "";
+
+    links.forEach(link => {
+        // Filter: tampilkan jika kategori 'semua' atau kategorinya cocok
+        if (category === "semua" || link.category === category) {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+
+            a.href = link.url;
+            if (link.url.startsWith("http")) {
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+            }
+
+            a.className = `group flex items-center justify-between rounded-xl bg-white px-5 py-4 font-medium text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md ${link.hoverRing} focus:outline-none focus:ring-2 focus:ring-amber-400`;
+
+            a.innerHTML = `
+                <span class="flex items-center gap-3">
+                    <span class="flex h-6 w-6 items-center justify-center">${link.svgIcon}</span>
+                    <span>${link.title}</span>
+                </span>
+                <svg class="h-5 w-5 text-slate-400 transition-transform duration-200 group-hover:translate-x-1 ${link.hoverText}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            `;
+
+            li.appendChild(a);
+            linkList.appendChild(li);
+        }
+    });
+}
+
 // ===== 2. FUNGSI PABRIK ITEM LINK (DOM BUILDER) =====
 function createLinkItem(link) {
     const item = document.createElement("li");

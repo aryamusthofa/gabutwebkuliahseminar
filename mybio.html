@@ -135,21 +135,40 @@
         </nav>
 
         <!-- ==================== DAFTAR LINK UTAMA ==================== -->
-        <main class="max-w-md mx-auto space-y-6">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-7">
+        <main class="max-w-md mx-auto space-y-6 items-center text-center">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">
 
 
             </h2>
             <div>
 
-                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-5">
 
                     Link Saya & Portofolio
                 </h2>
 
-                <!-- Wadah tempat JS nempelin list -->
-                <ul id="link-list" class="space-y-3"></ul>
-            </div>
+                <!-- TAB FILTER (TARUH DI SINI) -->
+                <div id="filter-tabs" class="mb-4 flex flex-wrap gap-2 items-center justify-center">
+                    <button type="button" data-category="semua" aria-pressed="true"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 transition duration-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus:outline-none cursor-pointer">
+                        Semua
+                    </button>
+                    <button type="button" data-category="project" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 transition duration-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus:outline-none cursor-pointer">
+                        Project
+                    </button>
+                    <button type="button" data-category="catatan" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 transition duration-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus:outline-none cursor-pointer">
+                        Catatan
+                    </button>
+                    <button type="button" data-category="kontak" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm ring-1 ring-slate-200 transition duration-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus:outline-none cursor-pointer">
+                        Kontak
+                    </button>
+
+                    <!-- Wadah tempat JS nempelin list -->
+                    <ul id="link-list" class="space-y-3 mb-7"></ul>
+                </div>
         </main>
 
         <!-- mybio.html -->
